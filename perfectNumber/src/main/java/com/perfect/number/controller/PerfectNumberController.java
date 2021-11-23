@@ -20,6 +20,8 @@ import com.perfect.number.service.PerfectNumber;
 @RequestMapping("/perfect-numbers")
 public class PerfectNumberController {
 	
+	private static final int MAX_RANGE = 10000;
+
 	@Qualifier("sumOfDivisorsFormula")
 	@Autowired
 	private PerfectNumber sumOfDivisorsFormulaService;
@@ -58,7 +60,7 @@ public class PerfectNumberController {
 			throw new ValidationException("Parameter start can not be higher than end");
 		}
 		
-		if(end - start > 10000) {
+		if(end - start > MAX_RANGE) {
 			throw new ValidationException("Range can not be higher than 10000");
 		}
 		
